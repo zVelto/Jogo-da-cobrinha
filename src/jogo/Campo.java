@@ -1,5 +1,7 @@
 package jogo;
 
+import jogo.enums.Referencia;
+
 public class Campo {
     
     private int nivel;
@@ -9,10 +11,13 @@ public class Campo {
     private int altura;
     private Posicao posicao;
 
-    public Campo(int nivel, Personagem personagem, Barreira[][] parede) {
+    public Campo(int nivel, Personagem personagem, int largura, int altura, Posicao posicao) {
         this.nivel = nivel;
         this.personagem = personagem;
-        this.parede = parede;
+        this.largura = largura;
+        this.altura = altura;
+        this.posicao = posicao;
+        parede = new Barreira[largura][altura];
     }
 
     public int getNivel() {
@@ -55,6 +60,14 @@ public class Campo {
         this.altura = altura;
     }
     
-    
+    public void criarParede() {
+        for(int i = 0; i < getLargura(); i++) {
+            for(int j = 0; j < getAltura(); j++) {
+                if(i == 0 || i == (getLargura() - 1) || j == 0 || j == (getAltura() - 1)) {
+                    parede[i][j] = new Barreira("H", new Posicao(i, j, Referencia.CAMPO));
+                }
+            }
+        }
+    }
     
 }
