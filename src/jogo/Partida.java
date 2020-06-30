@@ -4,8 +4,10 @@ public class Partida {
     private Campo campo;
     private Personagem personagem;
     private Posicao posicao;
+    private Integer estado;
 
     public Partida() {
+        estado = 1;
     }
 
     public Campo getCampo() {
@@ -22,6 +24,14 @@ public class Partida {
 
     public void setPersonagem(Personagem personagem) {
         this.personagem = personagem;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
     
 }
