@@ -34,11 +34,21 @@
 
 			function limparCanvas() {
 
-				contexto.fillStyle = 'lightblue';
+				contexto.fillStyle = 'white';
 				contexto.strokestyle = 'black';
 
 				contexto.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 				contexto.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+			}
+
+			function main() {
+				setTimeout(function onTick() {
+					limparCanvas();
+					avancoDaCobrinha();
+					desenharCobrinha();
+
+					main();
+				}, 100)
 			}
 
 			/* -------------------CONSTANTES---------------------- */
@@ -59,15 +69,7 @@
 			var gameCanvas = document.getElementById("gameCanvas");
 			var contexto = gameCanvas.getContext("2d");
 
-
-			avancoDaCobrinha();
-
-			dx = 0;
-			dy = -10;
-
-			avancoDaCobrinha();
-
-			desenharCobrinha();
+			main()
 
 
 		</script>
