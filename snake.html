@@ -5,6 +5,8 @@
 	</head>
 
 	<body>
+
+		<div id="score">0</div>
 		<canvas id="gameCanvas" width="300" height="300">
 			&lt;
 		</canvas>
@@ -62,6 +64,8 @@
 				const comeuComida = cobrinha[0].x === comidaX && cobrinha[0].y == comidaY;
 
 				if (comeuComida) {
+					score += 10;
+					document.getElementById('score').innerHTML = score;
 					criarComida();
 				}
 				else {
@@ -125,6 +129,7 @@
 
 			let comidaX
 			let comidaY
+			let score = 0;
 
 			let dx = 10;
 			let dy = 0;
