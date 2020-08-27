@@ -74,11 +74,35 @@
 			function main() {
 				setTimeout(function onTick() {
 					limparCanvas();
+					desenharComida();
 					avancoDaCobrinha();
 					desenharCobrinha();
 
 					main();
-				}, 100)
+				}, 250)
+			}
+
+			function randomTen(min, max) {
+				return Math.round((Math.random() * (max - min) + min) / 10) * 10;
+			}
+
+			function criarComida() {
+				comidaX = randomTen(0, gameCanvas.width - 10);
+				comidaY = randomTen(0, gameCanvas.height - 10);
+
+				cobrinha.forEach(function haComidaNaCobrinha(part) {
+					const comidaTaNaCobrinha = part.x == comidaX && part.y == comidaY
+					if (comidaTaNaCobrinha) {
+						criarComida();
+					}
+				});
+			}
+
+			function desenharComida() {
+				contexto.fillStyle = 'red';
+				contexto.strokestyle = 'darkred';
+				contexto.fillRect(comidaX, comidaY, 10, 10);
+				contexto.strokeRect(comidaX, comidaY, 10, 10);
 			}
 
 			/* -------------------CONSTANTES---------------------- */
@@ -91,6 +115,9 @@
 				{x: 110, y: 150}
 			];
 
+			let comidaX
+			let comidaY
+
 			let dx = 10;
 			let dy = 0;
 
@@ -100,6 +127,7 @@
 			var contexto = gameCanvas.getContext("2d");
 
 			main()
+			criarComida()
 			document.addEventListener("keydown", mudarDirecao)
 
 
