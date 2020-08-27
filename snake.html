@@ -5,6 +5,25 @@
 	</head>
 
 	<body>
-		<canvas id="gameCanvas" width="300" height="300">&lt;canvas>
+		<canvas id="gameCanvas" width="300" height="300">
+			&lt;
+		</canvas>
+
+		<script type="text/javascript">
+			
+			const COR_DA_BORDA_DO_CANVAS = 'black';
+			const COR_DE_FUNDO_DO_CANVAS = 'white';
+
+			var gameCanvas = document.getElementById("gameCanvas");
+			var contexto = gameCanvas.getContext("2d");
+
+			contexto.fillStyle = COR_DE_FUNDO_DO_CANVAS;
+			contexto.strokestyle = COR_DA_BORDA_DO_CANVAS;
+
+			contexto.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+			contexto.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+
+
+		</script>
 	</body>
 </html>
