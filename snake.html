@@ -84,6 +84,9 @@
 			}
 
 			function main() {
+
+				if (acabouOJogo()) return;
+				
 				setTimeout(function onTick() {
 					limparCanvas();
 					desenharComida();
@@ -115,6 +118,21 @@
 				contexto.strokestyle = 'darkred';
 				contexto.fillRect(comidaX, comidaY, 10, 10);
 				contexto.strokeRect(comidaX, comidaY, 10, 10);
+			}
+
+			function acabouOJogo() {
+				for (let i = 4; i < cobrinha.length; i++) {
+					const colidiu = cobrinha[i].x === cobrinha[0].x && cobrinha[i].y === cobrinha[0].y;
+
+					if(colidiu) return true
+				}
+
+				const bateuNaParedeEsquerda = cobrinha[0].x < 0;
+				const bateuNaParedeDireita = cobrinha[0].x > gameCanvas.width - 10;
+				const bateuNaParedeDoTopo = cobrinha[0].y < 0;
+				const bateuNaParedeDeBaixo = cobrinha[0].y > gameCanvas.height - 10;
+
+				return bateuNaParedeEsquerda || bateuNaParedeDireita || bateuNaParedeDoTopo || bateuNaParedeDeBaixo
 			}
 
 			/* -------------------CONSTANTES---------------------- */
