@@ -32,10 +32,16 @@
 				cobrinha.pop();
 			}
 
+			function limparCanvas() {
+
+				contexto.fillStyle = 'lightblue';
+				contexto.strokestyle = 'black';
+
+				contexto.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
+				contexto.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
+			}
+
 			/* -------------------CONSTANTES---------------------- */
-			
-			const COR_DA_BORDA_DO_CANVAS = 'black';
-			const COR_DE_FUNDO_DO_CANVAS = 'lightblue';
 
 			let cobrinha = [
 				{x: 150, y: 150},
@@ -53,11 +59,6 @@
 			var gameCanvas = document.getElementById("gameCanvas");
 			var contexto = gameCanvas.getContext("2d");
 
-			contexto.fillStyle = COR_DE_FUNDO_DO_CANVAS;
-			contexto.strokestyle = COR_DA_BORDA_DO_CANVAS;
-
-			contexto.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
-			contexto.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
 
 			avancoDaCobrinha();
 
