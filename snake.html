@@ -26,7 +26,7 @@
 			}
 
 			function avancoDaCobrinha() {
-				const cabeca = {x: cobrinha[0].x + dx, y: cobrinha[0].y};
+				const cabeca = {x: cobrinha[0].x + dx, y: cobrinha[0].y + dy};
 				cobrinha.unshift(cabeca)
 
 				cobrinha.pop();
@@ -37,6 +37,19 @@
 			const COR_DA_BORDA_DO_CANVAS = 'black';
 			const COR_DE_FUNDO_DO_CANVAS = 'lightblue';
 
+			let cobrinha = [
+				{x: 150, y: 150},
+				{x: 140, y: 150},
+				{x: 130, y: 150},
+				{x: 120, y: 150},
+				{x: 110, y: 150}
+			];
+
+			let dx = 10;
+			let dy = 0;
+
+			/* ----------------------------------------------------*/
+
 			var gameCanvas = document.getElementById("gameCanvas");
 			var contexto = gameCanvas.getContext("2d");
 
@@ -46,13 +59,12 @@
 			contexto.fillRect(0, 0, gameCanvas.width, gameCanvas.height);
 			contexto.strokeRect(0, 0, gameCanvas.width, gameCanvas.height);
 
-			let cobrinha = [
-				{x: 150, y: 150},
-				{x: 140, y: 150},
-				{x: 130, y: 150},
-				{x: 120, y: 150},
-				{x: 110, y: 150}
-			];
+			avancoDaCobrinha();
+
+			dx = 0;
+			dy = -10;
+
+			avancoDaCobrinha();
 
 			desenharCobrinha();
 
