@@ -59,7 +59,15 @@
 				const cabeca = {x: cobrinha[0].x + dx, y: cobrinha[0].y + dy};
 				cobrinha.unshift(cabeca)
 
-				cobrinha.pop();
+				const comeuComida = cobrinha[0].x === comidaX && cobrinha[0].y == comidaY;
+
+				if (comeuComida) {
+					criarComida();
+				}
+				else {
+					cobrinha.pop();
+				}
+
 			}
 
 			function limparCanvas() {
@@ -79,7 +87,7 @@
 					desenharCobrinha();
 
 					main();
-				}, 250)
+				}, 100)
 			}
 
 			function randomTen(min, max) {
