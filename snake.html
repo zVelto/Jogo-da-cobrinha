@@ -25,6 +25,13 @@
 				cobrinha.forEach(desenhoDaParteDaCobrinha);
 			}
 
+			function avancoDaCobrinha() {
+				const cabeca = {x: cobrinha[0].x + dx, y: cobrinha[0].y};
+				cobrinha.unshift(cabeca)
+
+				cobrinha.pop();
+			}
+
 			/* -------------------CONSTANTES---------------------- */
 			
 			const COR_DA_BORDA_DO_CANVAS = 'black';
